@@ -1,0 +1,18 @@
+{{/* UP Next */}}
+{{ $current_cate_name := .current_cate_name }}
+{{ with .ctx }}
+  <div class="article-entry">
+    <h2 class="section-title">Next in {{ $current_cate_name }}</h2>
+    <a href="{{ .URL }}" title="{{ .Title }}" class="media-object media-object--up-next">
+      <figure class="media-object__img">
+        <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" title="{{ .Title }}">
+      </figure>
+      <section class="media-object__text">
+        <h3>{{ .Title }}</h3>
+        <p class="media-object__summary">{{ .Summary }}</p>
+        <div class="btn btn--primary">Read more</div>
+      </section>
+    </a>
+  </div>
+{{ end }}
+{{/*end of  UP Next */}}

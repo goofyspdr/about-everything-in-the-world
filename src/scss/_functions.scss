@@ -1,0 +1,4 @@
+@function contentEdge($var) {
+  $max-width: $var;
+  @return calc((100% - #{$max-width}) / 2);
+}

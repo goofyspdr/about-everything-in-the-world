@@ -1,0 +1,67 @@
+.status-bar {
+    @include contentWidth(padding);
+    position: fixed;
+    left: 0;
+    z-index: 20;
+    top: -100px;
+    background: $white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: $white;
+    width: 100%;
+    @include slide-transition;
+    border-bottom: 1px solid $light-gray;
+
+    @include big-mobile {
+        top: initial;
+        bottom: -100px;
+        @include paddingX($space-sm / 2);
+    }
+
+    &.opened {
+        top: 0;
+
+        @include big-mobile {
+            top: initial;
+            bottom: 0;
+        }
+    }
+
+    .social-share {
+        img {
+            width: 20px;
+            height: 20px;
+            filter: invert(1);
+        }
+    }
+
+    .branding {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.status-bar__title {
+    display: block;
+    max-width: 500px;
+    white-space: nowrap;
+    padding: $space-sm / 4 $space-sm / 2;
+    text-transform: capitalize;
+    font-weight: bold;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    @include big-mobile {
+        max-width: 220px;
+        font-weight: bold;
+        overflow-x: scroll;
+        text-overflow: initial;
+        border: 1px solid $white;
+        font-weight: normal;
+        opacity: .6;
+    }
+}

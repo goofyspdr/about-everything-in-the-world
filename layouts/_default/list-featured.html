@@ -1,0 +1,22 @@
+<li>
+    {{ $current_cate := string .Params.category }}
+    {{ $current_cate_name := index .Site.Data.tables.category $current_cate }}
+    <a href="{{ .URL }}" title="{{ .Title }}" class="media-object media-object--half-overlay {{ .Params.category }}">
+        <figure class="media-object__img" style="background-image:url('{{ .Params.thumbnail }}')">
+            <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" title="{{ .Title }}">
+            <figcaption class="label {{ .Params.category }}">
+                {{ $current_cate_name }}
+            </figcaption>
+        </figure>
+        <section class="media-object__text {{ .Params.category }}">
+            <h3>{{ .Title }}</h3>
+            {{ $wordcounts := countwords .Content }}
+            {{ $readingtime := div $wordcounts 200 }}
+            {{/* {{ if le $readingtime 1 }}
+            <span>1 min read</span>
+            {{ else }}
+            <span>{{ $readingtime }} min read</span>
+            {{ end }} */}}
+        </section>
+    </a>
+</li>

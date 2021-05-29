@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="section single">
+<main class="main">
+  <article class="reading-zone">
+  {{ .Content }}
+  </article>
+  <article>
+    {{ range .Site.Data.tables.author }}
+    {{ if ne .bio "" }}
+      <div class="media-object media-object--person">
+        {{ if ne .image "" }}
+          {{ $img_src := resources.Get .image }}
+          {{ $img := $img_src.Fill "100x100 q60" }}
+          <figure style="background-image: url('{{ $img.Permalink }}');" class="media-object__img">
+            <img src="{{ $img.Permalink }}" alt="">
+          </figure>
+        {{ end }}
+        <section class="media-object__text">
+          <h2>{{ .name }}</h2>
+          <p>{{ .bio | markdownify }}</p>
+        </section>
+      </div>
+
+    {{ end }}
+  {{ end }}
+  </article>
+
+</main>
+</section>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <section class="section home">
+    <main class="main">
+      {{ $post := .GetPage "/posts" }}
+      {{ with $post }}
+        {{ range .Pages }}
+          <a href="{{ .URL }}">
+            <h2>
+            {{ .Title }}
+            </h2>
+          </a>
+        {{ end }}
+      {{ end }}
+    </main>
+  </section>
+{{ end }}

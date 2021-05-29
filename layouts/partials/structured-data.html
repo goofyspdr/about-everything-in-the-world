@@ -1,0 +1,35 @@
+{{ $currentAuthorId := .Params.author }}
+{{ $data := .Site.Data.author  }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Site.BaseURL }}{{ .URL }}"
+  },
+  "headline": "{{ .Title }}",
+  "image": "{{ .Site.BaseURL }}/{{ .Params.thumbnail }}",
+  {{/* [FIXME]: Fix publish date and modified date issue */}}
+  "datePublished": "{{.Date.Format "Jan 2 2006"}}",
+  "dateModified": "{{.Date.Format "Jan 2 2006"}}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ if isset .Params "author" }}{{ range $data }}{{ if eq $currentAuthorId .id }}{{ .name }}{{ end }}{{ end }}{{ else }}{{ range $data }}{{ if eq .role "owner" }}{{ .name }}{{ end }}{{ end }}{{ end }}"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Zooterre",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}/assets/zooterre-logo.png"
+    }
+  },
+  {{ if .Params.summary }}
+  "description": "{{ .Params.summary | truncate 160 }}"
+  {{ else if .Summary }}
+  "description": "{{ .Summary | truncate 160 }}"
+  {{ end }}
+}
+</script>

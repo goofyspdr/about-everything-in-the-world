@@ -1,0 +1,16 @@
+
+<li>
+  <a href="{{ .URL }}" title="{{ .Title }}" class="media-object media-object--full-thumb">
+
+    {{/* <figure class="media-object__img" style="background-image:url('http://picsum.photos/500/300')">
+      <img src="http://picsum.photos/500/300" alt="{{ .Title }}" title="{{ .Title }}">
+    </figure> */}}
+
+    <figure class="media-object__img" style="background-image:url('{{ .Params.thumbnail }}')">
+      <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" title="{{ .Title }}">
+    </figure>
+    <section class="media-object__text">
+      <h3>{{ .Title }}</h3>
+    </section>
+  </a>
+</li>

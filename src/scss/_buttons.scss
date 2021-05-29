@@ -1,0 +1,56 @@
+.btn {
+    font-size: 1rem;
+    padding: $space-sm / 2 $space-md;
+    text-align: center;
+    width: 100%;
+    max-width: 220px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    @extend .ui;
+
+    @include big-mobile {
+        max-width: initial;
+    }
+
+    @include hover-transition;
+
+    @mixin primary {
+        background: $color-accent;
+        border: 1px solid $color-accent;
+        color: $white;
+    }
+
+    @mixin secondary {
+        background: none;
+        border: 1px solid $color-accent;
+        color: $color-accent;
+    }
+
+    &.btn--primary {
+        @include primary();
+
+        &:hover {
+            @include secondary();
+        }
+    }
+
+    &.btn--secondary {
+        @include secondary();
+
+        &:hover {
+            @include primary();
+        }
+    }
+
+    &.btn--round {
+        @include primary();
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+
+        &:hover {
+            @include secondary();
+        }
+    }
+
+}

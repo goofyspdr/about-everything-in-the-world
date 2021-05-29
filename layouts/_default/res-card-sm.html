@@ -1,0 +1,14 @@
+{{ $current_cate := string .Params.category }}
+{{ $current_cate_name := index .Site.Data.tables.category $current_cate }}
+<a href="{{ .URL }}" class="res-card res-card--small" title="{{ .Title }}">
+  <figure class="res-card__img">
+    <img loading=lazy src="{{ .Params.thumbnail }}" alt="">
+  </figure>
+  <section class="res-card__text">
+  <h3 class="res-card__title">{{ .Title }}</h3>
+  <p class="summary">{{ .Summary }}</p>
+  <span class="red-card__label {{ .Params.category }}">
+    {{ $current_cate_name }}
+  </span>
+  </section>
+</a>

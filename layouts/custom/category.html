@@ -1,0 +1,53 @@
+{{ define "main" }}
+  {{ $current_cate := string .Params.category }}
+  {{ $current_cate_name := index .Site.Data.tables.category $current_cate }}
+
+  {{/* Article Array */}}
+
+  {{ $list := slice }}
+  {{ range .Site.Sections }}
+      {{ if (eq .Params.section_id "article") }}
+          {{ range .Pages }}
+            {{ if eq .Params.category $current_cate }}
+                {{ $list = $list | append . }}
+            {{ end }}
+          {{ end }}
+      {{ end }}
+  {{ end }}
+
+  <section class="section above-the-fold">
+    <ul>
+        {{ range $idx, $el := $list.ByDate.Reverse }}
+            {{ if eq $idx 0 }}
+            <li class="above-the-fold__main">
+            {{ .Render "res-card" }}
+            </li>
+            {{ end }}
+        {{ end }}
+        <li class="above-the-fold__side">
+            {{/* <ul>
+                {{ range $idx, $el := $list.ByDate.Reverse }}
+                    {{ if and (gt $idx 0) (lt $idx 5) }}
+                    <li>
+                        {{ .Render "res-card-sm" }}
+                    </li>
+                    {{ end }}
+                {{ end }}
+            </ul> */}}
+        </li>
+    </ul>
+  </section>
+
+  <section class="section article-entry article-entry--featured">
+      <h2 class="section-title">Latest in {{ $current_cate_name }}</h2>
+      <ul class="col col--4">
+          {{ range $idx, $el := $list.ByDate.Reverse }}
+              {{ if ne .Draft true }}
+                  {{ if gt $idx 0 }}
+                      {{ .Render "res-card" }}
+                  {{ end }}
+              {{ end }}
+          {{ end }}
+      </ul>
+  </section>
+{{ end }}

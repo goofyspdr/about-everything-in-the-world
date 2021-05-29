@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<section class="section--fancy-grid">
+<ul>
+{{ range $idx, $el := .Pages }}
+    {{ if ne .Draft true }}
+        {{ .Render "fancy-grid" }}
+    {{ end }}
+{{ end }}
+</ul>
+</section>
+
+{{/* <section class="article-entry article-entry--featured">
+    <h2 class="section-title">Featured Articles</h2>
+    <ul>
+    {{ range $idx, $el := .Pages }}
+        {{ if ne .Draft true }}
+            {{ if le $idx 3 }}
+                {{ .Render "list-featured" }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    </ul>
+    <h2 class="section-title">Latest Articles</h2>
+    <ul>
+    {{ range $idx, $el := .Pages }}
+        {{ if ne .Draft true }}
+            {{ if gt $idx 3 }}
+                {{ .Render "list" }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    </ul>
+</section> */}}
+
+{{ end }}

@@ -1,0 +1,28 @@
+{{/* slider */}}
+<div class="slider">
+    <div class="siema">
+        {{ range .Params.slider }}
+            <figure style="background-image:url('{{ .image }}');">
+                <img src="{{ .image }}" alt="{{ .description }}">
+                {{ if .description }}
+                    <figcaption class="caption-toggle">
+                        {{ .description }}
+                    </figcaption>
+                {{ end }}
+            </figure>
+        {{ end }}
+    </div>
+    <div class="control-group">
+      <button class="prev"> < prev </button>
+      <button class="next">next > </button>
+    </div>
+
+    <script src="/js/vendor/siema.min.js"></script>
+    <script>
+    const mySiema = new Siema();
+    document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
+    document.querySelector('.next').addEventListener('click', () => mySiema.next());
+    </script>
+
+    {{ partial "ads/in-feed-384" . }}
+</div>

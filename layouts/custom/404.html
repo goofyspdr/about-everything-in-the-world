@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="section section--404">
+  <h1>404</h1>
+  <p>
+    Sorry, the page you are looking for does not exist.
+    <strong>
+    But you might be interested in one of the article below
+    </strong>
+  </p>
+</section>
+
+<section class="section article-entry article-entry--featured">
+    <h2 class="section-title">You might be interested</h2>
+    <ul>
+        {{ range .Site.Sections }}
+            {{ if eq .Params.section_id "article" }}
+                {{ range $idx, $el := .Pages }}
+                    {{ if ne .Draft true }}
+                        {{ if lt $idx 6 }}
+                            {{ .Render "list-featured" }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ul>
+</section>
+{{ end }}

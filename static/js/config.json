@@ -1,0 +1,48 @@
+{
+    "platform": {
+        "facebook": {
+            "status": true,
+            "baseUrl": "https://www.facebook.com/sharer/sharer.php?u=",
+            "option": {
+                "title": ""
+            }
+        },
+        "twitter": {
+            "status": true,
+            "baseUrl": "https://twitter.com/home?status=",
+            "option": {
+                "title": ""
+            }
+        },
+        "google": {
+            "status": true,
+            "baseUrl": "https://plus.google.com/share?url=",
+            "option": {
+                "title": ""
+            }
+        },
+        "linkedin": {
+            "status": true,
+            "baseUrl": "https://www.linkedin.com/shareArticle?mini=true&url=",
+            "option": {
+                "title": ""
+            }
+        },
+        "pinterest": {
+            "status": true,
+            "baseUrl": "https://pinterest.com/pin/create/button/?url=",
+            "option": {
+                "title": "&media=",
+                "imgSrc": "",
+                "description": "&description="
+            }
+        },
+        "email": {
+            "status": true,
+            "baseUrl": "mailto:?subject=",
+            "option": {
+                "title": ""
+            }
+        }
+    }
+}

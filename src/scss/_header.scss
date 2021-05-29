@@ -1,0 +1,39 @@
+.site-header {
+    @include contentWidth(padding);
+    @include paddingY($space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      margin-bottom: 0;
+    }
+
+    & > * {
+
+    }
+}
+
+
+.branding {
+    display: block;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 200;
+
+    .branding__img {
+        width: 100px;
+        height: 100px;
+        transform: scaleX(-1);
+    }
+
+    .branding__text {
+        white-space: nowrap;
+        font-size: 1.2rem;
+        margin: 0;
+        padding-left: $space-sm / 2;
+        color: $color-accent;
+    }
+}

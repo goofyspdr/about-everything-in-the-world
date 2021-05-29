@@ -1,0 +1,41 @@
+
+.facebook {
+  background: #1877f2;
+}
+.twitter {
+  background: #1da1f2;
+}
+.pinterest {
+  background: #bd081c;
+}
+.linkedin {
+  background: #007bb5;
+}
+
+.social-share {
+  display: flex;
+  align-items: center;
+  @include paddingY($space-sm / 2);
+
+  @include big-mobile {
+    color: $black;
+  }
+
+  & > * {
+    cursor: pointer;
+    font-weight: bold;
+    padding: $space-sm / 2;
+    margin-right: $space-sm / 2;
+    border-radius: 4px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+  }
+}

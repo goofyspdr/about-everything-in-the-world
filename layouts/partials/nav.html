@@ -1,0 +1,38 @@
+{{/* temp selected cate nav */}}
+<nav>
+  <ul id="nav_header" class="nav nav--header">
+
+    {{ range .Site.Pages }}
+      {{ if and (ne .Section "posts") (ne .Section "about") }}
+        {{ if or (eq .Params.category "CATE_01")  (eq .Params.category "CATE_03") (eq .Params.category "CATE_06") (eq .Params.category "CATE_04")}}
+          <li>
+            <a href="{{ .URL }}">
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </ul>
+   <div id="btn_nav" class="btn-nav">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+  </div>
+</nav>
+
+
+
+<script>
+  (function () {
+    const nav = document.getElementById('nav_header');
+    const btnNav = document.getElementById('btn_nav');
+
+    btnNav.addEventListener('click',function () {
+      console.log(this);
+      this.classList.toggle('is-opened');
+      nav.classList.toggle('is-opened');
+    }, false);
+  }());
+</script>
+
+

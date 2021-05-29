@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{/* Meta Title */}}
+    {{ if .IsHome }}
+    <title>{{ .Site.Title }} | {{ .Summary }}</title>
+    <meta property="og:title" content="{{ .Site.Title }} | {{ .Summary }}">
+    {{ else }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+    {{ end }}
+
+    <link rel="canonical" href="{{ .Permalink | absURL }}">
+
+    {{/* Meta Description */}}
+    {{ if .Params.summary }}
+    <meta name="description" content="{{ .Params.summary }}">
+    <meta property="og:description" content="{{ .Params.summary }}">
+    {{ else if .Summary }}
+    <meta name="description" content="{{ .Summary }}">
+    <meta property="og:description" content="{{ .Summary }}">
+    {{ else }}
+    <meta name="description" content="{{ .Site.Data.site.description }}">
+    <meta property="og:description" content="{{ .Site.Data.site.description }}">
+    {{ end }}
+
+    {{/* OG Tags */}}
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}">
+    <meta property="og:url" content="{{ .Site.BaseURL }}{{ .URL }}">
+
+    {{ if eq .Section "wellness" }}
+        <meta property="og:type" content="Article">
+    {{ else }}
+        <meta property="og:type" content="Website">
+    {{ end }}
+
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {{ $options := (dict "enableSourceMap" true "outputStyle" "compressed") }}
+    {{ $style := resources.Get "scss/main.scss" | resources.ToCSS $options | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171800863-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-171800863-1');
+</script>
+<!-- adsense-->
+<script data-ad-client="ca-pub-4416941806586225" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Pinterest Verification -->
+<meta name="p:domain_verify" content="f5c25b1d2f5baf990eeae8e9b2d6ef34"/>
+</head>
+<body class="_{{ .Section }}">
+    {{ partial "header" . }}
+    <main>
+    {{ block "main" . }}
+        {{ .Content }}
+    {{ end }}
+    </main>
+    <!-- {{ partial "footer" . }} -->
+    <script src="/js/main.js"></script>
+    <!-- <script src="/js/social.share.js"></script> -->
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{/* Structured Data */}}
+{{ partial "structured-data" . }}
+
+
+<section class="section single">
+    <main class="main">
+        <article class="reading-zone">
+            <h1>{{ .Title }}</h1>
+
+            <time class="reading-zone__date" datetime='{{.Date.Format "Jan 2 2006"}}'>
+            Published on {{.Date.Format "Jan 2 2006"}}
+            </time>
+
+            {{ .Content }}
+
+        </article>
+    </main>
+</section>
+
+
+{{ partial "status-bar" . }}
+
+
+{{ end }}

@@ -1,0 +1,24 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    display: none;
+}
+
+.form__input {
+    width: 100%;
+    margin-bottom: $space-md;
+    padding: $space-sm / 3;
+    font-size: $body-text;
+    border: 1px solid $color-accent;
+}
+
+.form__input--search {
+    background: none;
+    margin-bottom: 0;
+    border: 1px solid $white;
+    color: $white;
+}
+

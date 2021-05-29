@@ -1,0 +1,47 @@
+#keyword_tool {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #e4e4e4;
+  // width: 100%;
+  width: 300px;
+  height: 100%;
+  padding: 1rem 1.5rem;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.shrink {
+    // minimize tool window
+  }
+
+  .widget-title {
+    font-weight: bold;
+    align-self: center;
+    margin: 0;
+    margin-right: 2rem;
+  }
+
+  li {
+    list-style: none;
+    align-self: left;
+    margin-right: 2rem;
+  }
+
+  ul,
+  section {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+}
+
+#keyword_set {
+  width: 100%;
+}
+
+.cms-editor-visual {
+  margin-bottom: 200px;
+}

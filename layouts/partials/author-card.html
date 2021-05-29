@@ -1,0 +1,79 @@
+
+{{ $currentAuthorId := .Params.author }}
+{{ $data := .Site.Data.tables.author  }}
+
+{{ if isset .Params "author" }}
+    {{ range $data }}
+        {{ if eq $currentAuthorId .id }}
+                <section class="section section--bio">
+            <div class="media-object media-object--person">
+                {{ if ne .image "" }}
+                  <figure class="media-object__img">
+                    {{ $img_src := resources.Get .image }}
+                    {{ $img := $img_src.Fill "100x100 q60" }}
+                    <img src="{{ $img.Permalink }}" alt="">
+
+                  </figure>
+                {{ end }}
+                <section class="media-object__text">
+                    <em class="author-name">{{ .name }}</em><span class="author-title">{{ .occupation }}</span>
+                </section>
+            </div>
+            {{/* <p>{{ .bio | markdownify }}</p> */}}
+        </section>
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ range $data }}
+        {{ if eq .role "owner" }}
+        {{ $img_src := resources.Get .image }}
+        {{ $img := $img_src.Fill "100x100 q60" }}
+         <section class="section section--bio">
+            <div class="media-object media-object--person">
+                <figure class="media-object__img">
+                    <img src="{{ $img.Permalink }}" alt="">
+                </figure>
+                <section class="media-object__text">
+                    <em class="author-name">{{ .name }}</em><span class="author-title">{{ .occupation }}</span>
+                </section>
+            </div>
+            {{/* <p>{{ .bio | markdownify }}</p> */}}
+        </section>
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+<script>
+(function () {
+
+
+
+var bio = document.querySelectorAll('.section--bio p');
+var readMoreBtn = document.createElement('div');
+readMoreBtn.setAttribute('class', 'btn btn--secondary');
+readMoreBtn.innerText = 'Read more';
+
+readMoreBtn.addEventListener('click', function () {
+
+    bio.forEach(function (i, idx) {
+        i.style = '';
+    });
+
+    this.outerHTML = '';
+
+}, false);
+
+if (bio.length > 1) {
+    bio[0].parentElement.appendChild(readMoreBtn);
+}
+
+bio.forEach(function (i, idx) {
+    if (idx > 1) {
+        i.style = 'display: none;';
+    }
+});
+
+
+
+}());
+</script>

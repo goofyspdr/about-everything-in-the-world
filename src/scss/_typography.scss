@@ -1,0 +1,99 @@
+// typography
+
+
+// root
+:root {
+    font-size: $root-font-size;
+}
+
+// var
+$heading-text: 2.2rem;
+$body-text: 1.2rem;
+
+html, body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+// Heading text
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-weight: 900;
+        text-transform: capitalize;
+        margin-bottom: $space-lg;
+        line-height: 1.2;
+        // letter-spacing: px;
+    }
+}
+
+h1, .h1 {
+    font-size: $heading-text;
+
+    @include big-mobile {
+        font-size: $heading-text * .8;
+    }
+};
+h2, .h2 {
+    font-size: $heading-text * .8;
+
+    @include big-mobile {
+        font-size: $heading-text * .6;
+    }
+};
+h3, .h3 { font-size: $heading-text * .6 };
+h4, .h4 { font-size: $body-text };
+h5, .h5 { font-size: $body-text };
+h6, .h6 { font-size: $body-text };
+
+// Body text
+
+p, .p {
+    font-size: $body-text;
+    line-height: 1.5;
+    font-family: 'Lora', serif;
+
+    @include big-mobile {
+        font-size: $body-text * .8;
+    }
+
+    a {
+        color: $color-accent;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+strong {
+    font-weight: bold;
+}
+
+article {
+    margin-bottom: $space-lg;
+
+    ul, ol {
+        margin-bottom: $space-lg;
+    }
+
+    li {
+        @extend .p;
+        list-style: disc;
+        margin-left: $space-md * 2;
+
+        @include big-mobile {
+            margin-left: $space-md;
+        }
+    }
+}
+
+i,
+.author-name {
+    font-style: italic;
+}
+
+
+// UI
+.ui {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1rem;
+    // letter-spacing: .1rem;
+}

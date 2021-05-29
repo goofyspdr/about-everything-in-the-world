@@ -1,0 +1,86 @@
+@mixin contentWidth ($method) {
+  #{$method}-left: 2vw;
+  #{$method}-right: 2vw;
+
+  @include big-tablet {
+      #{$method}-left: 5vw;
+      #{$method}-right: 5vw;
+  }
+
+  @include big-mobile {
+      #{$method}-left: $space-sm / 2;
+      #{$method}-right: $space-sm / 2;
+  }
+
+  @media (min-width: $big-desktop) {
+      #{$method}-left: calc((100% - #{$big-desktop}) / 2);
+      #{$method}-right: calc((100% - #{$big-desktop}) / 2);
+  }
+
+}
+
+@mixin paddingX ($var) {
+    padding-left: $var;
+    padding-right: $var;
+}
+
+@mixin paddingY ($var) {
+    padding-top: $var;
+    padding-bottom: $var;
+}
+
+@mixin marginX ($var) {
+  margin-left: $var;
+  margin-right: $var;
+}
+
+@mixin marginY ($var) {
+  margin-top: $var;
+  margin-bottom: $var;
+}
+
+// media query
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin big-mobile {
+  @media (max-width: $big-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin big-tablet {
+  @media (max-width: $big-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin big-desktop {
+  @media (max-width: $big-desktop) {
+    @content;
+  }
+}
+
+// hover state transition
+@mixin hover-transition {
+  transition: .3s ease-in-out;
+}
+
+@mixin slide-transition {
+  transition: .5s ease-in-out;
+}

@@ -1,0 +1,31 @@
+<li>
+    <a href="{{ .URL }}" title="{{ .Title }}" class="media-object media-object--overlay">
+
+        {{ if eq .Section "quotes-and-memes" }}
+            {{ range $idx, $el := .Params.quotes_and_memes }}
+                {{ if eq $idx 0 }}
+                    <figure class="media-object__img" style="background-image:url('{{ .image }}')">
+                        <img src="{{ .image }}" alt="{{ .Title }}" title="{{ .Title }}">
+                    </figure>
+                {{ end }}
+            {{ end }}
+        {{ else }}
+        <figure class="media-object__img" style="background-image:url('{{ .Params.thumbnail }}')">
+            <img src="{{ .Params.thumbnail }}" alt="{{ .Title }}" title="{{ .Title }}">
+        </figure>
+        {{ end }}
+
+        <section class="media-object__text">
+            <h3 class="media-object__title">{{ .Title }}</h3>
+            <p class="media-object__summary">{{ .Summary }}</p>
+            {{ $wordcounts := countwords .Content }}
+            {{ $readingtime := div $wordcounts 200 }}
+            {{ if le $readingtime 1 }}
+            <span>1 min read</span>
+            {{ else }}
+            <span>{{ $readingtime }} min read</span>
+            {{ end }}
+        </section>
+    </a>
+</li>
+

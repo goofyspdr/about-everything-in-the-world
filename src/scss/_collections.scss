@@ -1,0 +1,30 @@
+.above-the-fold--collections {
+  background: url('http://picsum.photos/2000/800');
+  height: 50vh;
+  width: 100%;
+  display: block;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(rgba($color-accent-2, .5), transparent, transparent, transparent);
+    left: 0;
+    top: 0;
+  }
+}
+
+.collections {
+  & > ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & > * {
+      width: calc(100% / 3 - #{$space-md});
+    }
+  }
+}

@@ -1,0 +1,104 @@
+baseURL = ""
+title = ""
+# summaryLength = 20
+assetDir = "src"
+
+[markup.goldmark.renderer]
+unsafe= true
+
+[outputFormats]
+
+  [outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "searchindex"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+home = [
+  "HTML",
+  "RSS",
+  "SearchIndex"
+]
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+
+[permalinks]
+  posts = "/:slug/"
+
+
+[languages]
+
+[languages.en]
+
+[[languages.en.menu.cate]]
+name = "Mental Health"
+url = "/mental-health"
+weight = 1
+
+[[languages.en.menu.cate]]
+name = "Spirituality"
+url = "/spirituality"
+weight = 2
+
+[[languages.en.menu.cate]]
+name = "Self-Help"
+url = "/self-help"
+weight = 3
+
+[[languages.en.menu.cate]]
+name = "Interesting"
+url = "/interesting"
+weight = 4
+
+[[languages.en.menu.cate]]
+name = "Pets and Animals"
+url = "/pets-and-animals"
+weight = 5
+
+# [NOTE]: Inspirational and Business not yet have enough content, dont show nav to category page
+
+[[languages.en.menu.cate]]
+name = "Inspirational"
+url = "/inspirational"
+weight = 6
+
+[[languages.en.menu.cate]]
+name = "Business"
+url = "/business"
+weight = 7
+
+
+# non content page
+# [[languages.en.menu.info]]
+# name = "About"
+# url = "/about"
+# weight = 1
+
+
+
+
+[params]
+
+[params.social]
+
+[params.social.facebook]
+title = "Facebook"
+url = "https://www.facebook.com/Bazaarofthoughts/"
+icon = "/assets/social/facebook.svg"
+
+[params.social.instagram]
+title = "Instagram"
+url = ""
+icon = "/assets/social/instagram.svg"
+
+[params.social.twitter]
+title = "Twitter"
+url = "https://twitter.com/bazothts"
+icon = "/assets/social/twitter.svg"
+
+[params.social.pinterest]
+title = "Pinterest"
+url = "https://www.pinterest.ca/bazaarofthoughts"
+icon = "/assets/social/pinterest.svg"
